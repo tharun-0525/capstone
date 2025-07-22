@@ -1,0 +1,15 @@
+# This is used by the action https://github.com/dorny/paths-filter
+
+# Filters for splitting test jobs
+
+go/api-golang:
+  - "go/api-golang/**"
+
+node/api-node:
+  - "node/api-node/**"
+
+python/load-generator-python:
+  - "python/load-generator-python/**"
+
+react/client-react:
+  - "react/client-react/**"

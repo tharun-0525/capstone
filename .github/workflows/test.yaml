@@ -1,0 +1,43 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - sp/tool-cache-experiments
+  workflow_dispatch:
+
+jobs:
+  filter:
+    runs-on: ubuntu-24.04
+    outputs:
+      services: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Paths Changes Filter
+        id: filter
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        with:
+          token: ${{ github.token }}
+          filters: .github/utils/file-filters.yaml
+
+  run-tests:
+    runs-on: ubuntu-24.04
+    if: ${{ needs.filter.outputs.services != '[]' && needs.filter.outputs.services != '' }}
+    needs: filter
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.filter.outputs.services) }}
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-dependencies
+        with:
+          install_task: "true"
+          install_go: ${{ startsWith(matrix.service, 'go/') }}
+          install_node: ${{ startsWith(matrix.service, 'node/') || startsWith(matrix.service, 'react/') }}
+          install_python: ${{ startsWith(matrix.service, 'python/') }}
+          service_path: ${{ matrix.service }}
+      - name: run tests
+        working-directory: ${{ matrix.service }}
+        run: |
+          task test
