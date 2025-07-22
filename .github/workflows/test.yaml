@@ -3,7 +3,7 @@ name: Run Tests
 on:
   push:
     branches:
-      - sp/tool-cache-experiments
+      - main
   workflow_dispatch:
 
 jobs:
