@@ -1,0 +1,22 @@
+name: Export GitHub Action Timing Data
+
+on:
+  workflow_run:
+    workflows:
+      - "Build and Push Container Images"
+      - "Run Tests"
+    types: [completed]
+
+jobs:
+  export-otel-trace:
+    name: OpenTelemetry Export Trace
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Export Workflow Trace
+        uses: inception-health/otel-export-trace-action@7eabc7de1f4753f0b45051b44bb0ba46d05a21ef # v1.8.0
+        with:
+          otlpEndpoint: grpc://api.honeycomb.io:443/
+          # Formatted as x-honeycomb-team=YOUR_API_KEY,x-honeycomb-dataset=gha-capstone
+          otlpHeaders: ${{ secrets.HONEYCOMB_OTLP_HEADERS }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          runId: ${{ github.event.workflow_run.id }}
