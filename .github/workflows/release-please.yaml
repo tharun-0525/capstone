@@ -1,9 +1,11 @@
 name: Release Please
 
 on:
-  push:
-    branches:
-      - main
+  # NOTE: Disabling for now while iterating on other workflows...
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
 
 permissions:
   contents: write
