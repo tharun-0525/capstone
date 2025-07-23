@@ -1,0 +1,15 @@
+GITHUB_TOKEN := $(shell gh auth token)
+
+# notes:
+#	- --no-skip-checkout required to ensure git is initialized inside container
+#	- current config results in all services being "changed"
+# - used catthehacker/ubuntu:act-22.04 because node:16-buster-slim doesnt contain git, and 24.04 image is still beta (and failed)
+trigger-workflow-test:
+	act push \
+		--container-architecture linux/amd64 \
+		-s GITHUB_TOKEN="$(GITHUB_TOKEN)" \
+		-e ${PWD}/event.json \
+		-P ubuntu-24.04=catthehacker/ubuntu:act-22.04 \
+		--directory ../../../.. \
+		--no-skip-checkout \
+		-W .github/workflows/test.yaml
