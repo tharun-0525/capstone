@@ -6,9 +6,9 @@ vars:
   SERVICE_RELEASE_TAG: services/other/postgresql
 
 includes:
-  github-actions:
-    taskfile: ../../.github/utils/Taskfile.yaml
-    dir: ../../.github/utils
+  utils:
+    taskfile: ../../utils/Taskfile.yaml
+    dir: ../../utils
 
 tasks:
   run-postgres:

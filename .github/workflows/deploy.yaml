@@ -1,6 +1,7 @@
 name: Deploy Service to Environment
 
 on:
+  # This could use a workflow_call instead... (or have both)
   workflow_dispatch:
     inputs:
       service:

@@ -4,17 +4,17 @@
 
 # Filters for splitting test jobs
 
-go/api-golang:
-  - "go/api-golang/**"
+services/go/api-golang:
+  - "services/go/api-golang/**"
 
-node/api-node:
-  - "node/api-node/**"
+services/node/api-node:
+  - "services/node/api-node/**"
 
-other/postgresql:
-  - "other/postgresql/**"
+services/other/postgresql:
+  - "services/other/postgresql/**"
 
-python/load-generator-python:
-  - "python/load-generator-python/**"
+services/python/load-generator-python:
+  - "services/python/load-generator-python/**"
 
-react/client-react:
-  - "react/client-react/**"
+services/react/client-react:
+  - "services/react/client-react/**"

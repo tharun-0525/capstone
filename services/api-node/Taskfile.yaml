@@ -1,20 +1,21 @@
 version: "3"
 
 vars:
-  IMAGE_REPO: sidpalas/devops-directive-docker-course-client-react-nginx
+  DATABASE_URL: "postgres://postgres:foobarbaz@localhost:5432/postgres"
+  IMAGE_REPO: sidpalas/devops-directive-docker-course-api-node
   IMAGE_TAG: foobarbaz
-  SERVICE_RELEASE_TAG: services/react/client-react
+  SERVICE_RELEASE_TAG: services/go/api-golang
 
 includes:
-  github-actions:
-    taskfile: ../../.github/utils/Taskfile.yaml
-    dir: ../../.github/utils
+  utils:
+    taskfile: ../../utils/Taskfile.yaml
+    dir: ../../utils
 
 tasks:
   build-container-image:
     desc: Build container image
     cmds:
-      - docker build -t {{.IMAGE_REPO}}:{{.IMAGE_TAG}} .
+      - docker build -t {{.IMAGE_REPO}}{{.IMAGE_TAG}} .
 
   build-container-image-multi-arch:
     desc: Build multi-arch container image
@@ -32,9 +33,9 @@ tasks:
       - npm install
 
   run:
-    desc: Start react client
+    desc: Start node api
     cmds:
-      - npm run dev
+      - DATABASE_URL={{.DATABASE_URL}} npm run dev
 
   test:
     desc: run tests

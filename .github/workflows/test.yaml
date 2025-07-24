@@ -1,10 +1,9 @@
 name: Run Tests
 
 on:
-  # NOTE: Disabling for now while iterating on other workflows...
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:

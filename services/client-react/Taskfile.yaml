@@ -1,15 +1,14 @@
 version: "3"
 
 vars:
-  IMAGE_REPO: sidpalas/devops-directive-kubernetes-course-load-generator-python
+  IMAGE_REPO: sidpalas/devops-directive-docker-course-client-react-nginx
   IMAGE_TAG: foobarbaz
-  SERVICE_RELEASE_TAG: services/python/load-generator-python
+  SERVICE_RELEASE_TAG: services/react/client-react
 
 includes:
-  github-actions:
-    taskfile: ../../.github/utils/Taskfile.yaml
-    dir: ../../.github/utils
-
+  utils:
+    taskfile: ../../utils/Taskfile.yaml
+    dir: ../../utils
 tasks:
   build-container-image:
     desc: Build container image
@@ -27,15 +26,14 @@ tasks:
         .
 
   install:
-    desc: Install load generator dependencies
+    desc: install dependencies
     cmds:
-      - poetry install --no-root
+      - npm install
 
   run:
-    desc: Start load generator
+    desc: Start react client
     cmds:
-      # api-golang is listening on port 8000
-      - API_URL=http://localhost:8000/ DELAY_MS=100 poetry run python main.py
+      - npm run dev
 
   test:
     desc: run tests

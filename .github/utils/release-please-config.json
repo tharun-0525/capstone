@@ -5,23 +5,17 @@
   "include-v-in-tag": false,
   "bump-minor-pre-major": true,
   "packages": {
-    "go/api-golang": {
-      "component": "services/go/api-golang",
+    "services/go/api-golang": {
       "release-type": "go"
     },
-    "node/api-node": {
-      "component": "services/node/api-node",
+    "services/node/api-node": {
       "release-type": "node"
     },
-    "other/postgresql": {
-      "component": "services/other/postgresql"
-    },
-    "python/load-generator-python": {
-      "component": "services/node/load-generator-python",
+    "services/other/postgresql": {},
+    "services/python/load-generator-python": {
       "release-type": "python"
     },
-    "react/client-react": {
-      "component": "services/react/client-react",
+    "services/react/client-react": {
       "release-type": "node"
     }
   },
