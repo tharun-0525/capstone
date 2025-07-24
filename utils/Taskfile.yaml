@@ -6,22 +6,24 @@ tasks:
     vars:
       SERVICE_RELEASE_TAG: "{{.CLI_ARGS}}"
     cmds:
-      - cmd: git describe --tags --always --first-parent --match "{{.SERVICE_RELEASE_TAG}}@[0-9]*.[0-9]*.[0-9]*"
-        silent: true
+      - |
+        set -euo pipefail
+        TAG=$(git describe --tags --always --first-parent --match "{{.SERVICE_RELEASE_TAG}}@[0-9]*.[0-9]*.[0-9]*")
+        PREFIX="{{.SERVICE_RELEASE_TAG}}@"
+        echo "${TAG#${PREFIX}}"
+    silent: true
 
   generate-extended-version-tag:
     desc: "Emit X.Y.Z-000N-g<SHA> using generate-version-tag as the base"
     vars:
-      SERVICE_RELEASE_TAG: "{{.CLI_ARGS}}" # pass-through
+      SERVICE_RELEASE_TAG: "{{.CLI_ARGS}}"
       BASE:
         sh: task -s generate-version-tag -- {{.SERVICE_RELEASE_TAG}}
     cmds:
       - |
         set -euo pipefail
 
-        SERVICE="{{.SERVICE_RELEASE_TAG}}"
-        GIT_TAG="{{.BASE}}"                      
-        GIT_VERSION="${GIT_TAG#${SERVICE}@}"     
+        GIT_VERSION="{{.BASE}}"
 
         # Ensure we have the -N-g<sha> suffix
         if [[ ! $GIT_VERSION =~ -g[0-9a-fA-F]+$ ]]; then
