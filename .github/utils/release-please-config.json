@@ -13,6 +13,9 @@
       "component": "services/node/api-node",
       "release-type": "node"
     },
+    "other/postgresql": {
+      "component": "services/other/postgresql"
+    },
     "python/load-generator-python": {
       "component": "services/node/load-generator-python",
       "release-type": "python"
