@@ -7,8 +7,9 @@ vars:
 
 includes:
   utils:
-    taskfile: ../../utils/Taskfile.yaml
-    dir: ../../utils
+    taskfile: ../../../utils/Taskfile.yaml
+    dir: ../../../utils
+
 tasks:
   build-container-image:
     desc: Build container image
