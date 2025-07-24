@@ -2,10 +2,11 @@ name: Build and Push Container Images
 
 on:
   # NOTE: Disabling for now while iterating on other workflows...
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
+    # TODO: enabled triggering build for specific service manually
 
 permissions:
   actions: write # used to trigger deploy workflow
