@@ -3,6 +3,12 @@ version: "3"
 vars:
   IMAGE_REPO: sidpalas/devops-directive-kubernetes-course-db-migrator
   IMAGE_TAG: foobarbaz
+  SERVICE_RELEASE_TAG: services/other/postgresql
+
+includes:
+  github-actions:
+    taskfile: ../../.github/utils/Taskfile.yaml
+    dir: ../../.github/utils
 
 tasks:
   run-postgres:

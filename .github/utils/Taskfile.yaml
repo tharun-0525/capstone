@@ -1,0 +1,35 @@
+version: "3"
+
+tasks:
+  generate-version-tag:
+    desc: "Use git describe to generate a tag based on the latest release tag"
+    vars:
+      SERVICE_RELEASE_TAG: "{{.CLI_ARGS}}"
+    cmds:
+      - cmd: git describe --tags --always --first-parent --match "{{.SERVICE_RELEASE_TAG}}@[0-9]*.[0-9]*.[0-9]*"
+        silent: true
+
+  generate-extended-version-tag:
+    desc: "Emit X.Y.Z-000N-g<SHA> using generate-version-tag as the base"
+    vars:
+      SERVICE_RELEASE_TAG: "{{.CLI_ARGS}}" # pass-through
+      BASE:
+        sh: task -s generate-version-tag -- {{.SERVICE_RELEASE_TAG}}
+    cmds:
+      - |
+        set -euo pipefail
+
+        SERVICE="{{.SERVICE_RELEASE_TAG}}"
+        GIT_TAG="{{.BASE}}"                      
+        GIT_VERSION="${GIT_TAG#${SERVICE}@}"     
+
+        # Ensure we have the -N-g<sha> suffix
+        if [[ ! $GIT_VERSION =~ -g[0-9a-fA-F]+$ ]]; then
+          GIT_HASH="$(git rev-parse --short HEAD)"
+          GIT_VERSION="${GIT_VERSION}-0-g${GIT_HASH}"
+        fi
+
+        # Split and zero-pad the count (N)
+        IFS='-' read -r BASE_VER COUNT GREF <<<"$GIT_VERSION"
+        printf "%s-%04d-%s\n" "$BASE_VER" "$COUNT" "$GREF"
+    silent: true

@@ -4,6 +4,12 @@ vars:
   DATABASE_URL: "postgres://postgres:foobarbaz@localhost:5432/postgres"
   IMAGE_REPO: sidpalas/devops-directive-docker-course-api-golang
   IMAGE_TAG: foobarbaz
+  SERVICE_RELEASE_TAG: services/go/api-golang
+
+includes:
+  github-actions:
+    taskfile: ../../.github/utils/Taskfile.yaml
+    dir: ../../.github/utils
 
 tasks:
   install:
