@@ -17,7 +17,7 @@
       "component": "services/other/postgresql"
     },
     "services/python/load-generator-python": {
-      "component": "services/node/load-generator-python",
+      "component": "services/python/load-generator-python",
       "release-type": "python"
     },
     "services/react/client-react": {
