@@ -3,14 +3,16 @@
 # This is effectively serving as a naive target determinator (see: https://blog.swgillespie.me/posts/monorepo-ingredients/)
 
 # ---- services ---------------------------------------------------------------
-services/go/api-golang:
+services/go/api-golang: &api_golang
   - "services/go/api-golang/**"
+  - *postgresql # db migrations tied to service
 
 services/node/api-node:
   - "services/node/api-node/**"
 
-services/other/postgresql:
+services/other/postgresql: &postgresql
   - "services/other/postgresql/**"
+  - *api_golang # db migrations tied to service
 
 services/python/load-generator-python:
   - "services/python/load-generator-python/**"
