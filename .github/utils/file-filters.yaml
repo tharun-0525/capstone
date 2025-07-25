@@ -11,7 +11,7 @@ services/node/api-node:
   - "services/node/api-node/**"
 
 services/other/postgresql:
-  - &api_golang # db migrations tied to service
+  - *api_golang # db migrations tied to service
 
 
 services/python/load-generator-python:
