@@ -128,7 +128,6 @@ jobs:
         if: ${{ !env.ACT }} # Don't trigger deploy when running locally
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # TODO: Pass full image tag and version?
         run: |
           gh workflow run deploy.yaml \
             -f service=${{ matrix.service }} \
