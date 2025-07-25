@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     tags:
-      - "*@[0-9]*.[0-9]*.[0-9]*" # service@X.Y.Z
+      - "**@[0-9]*.[0-9]*.[0-9]*" # service/foo/bar@X.Y.Z
+
   workflow_dispatch:
     inputs:
       service:
@@ -107,7 +108,9 @@ jobs:
             image_tag=$(task utils:generate-extended-version-tag -- "$SERVICE")
           fi
 
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
           echo "image_tag=${image_tag}" >> "$GITHUB_OUTPUT"
+
       - name: Build and push Docker images
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         with:
