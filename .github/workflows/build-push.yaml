@@ -134,5 +134,5 @@ jobs:
             -f service=${{ matrix.service }} \
             -f version=${{ steps.image-tag.outputs.version }} \
             -f image_tag=${{ steps.image-tag.outputs.image_tag }}
-            -f environment="{{ needs.filter.outputs.environment }}" \
+            -f environment={{ needs.filter.outputs.environment }} \
             -r ${GITHUB_REF}
