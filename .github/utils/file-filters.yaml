@@ -2,19 +2,30 @@
 
 # This is effectively serving as a naive target determinator (see: https://blog.swgillespie.me/posts/monorepo-ingredients/)
 
-# Filters for splitting test jobs
+# ---- shared patterns --------------------------------------------------------
+docs_excludes: &docs_excludes
+  - "!**/*.md"
+  - "!**/*.mdx"
+  - "!**/docs/**"
+  - "!**/README*"
 
+# ---- services ---------------------------------------------------------------
 services/go/api-golang:
   - "services/go/api-golang/**"
+  - *docs_excludes
 
 services/node/api-node:
   - "services/node/api-node/**"
+  - *docs_excludes
 
 services/other/postgresql:
   - "services/other/postgresql/**"
+  - *docs_excludes
 
 services/python/load-generator-python:
   - "services/python/load-generator-python/**"
+  - *docs_excludes
 
 services/react/client-react:
   - "services/react/client-react/**"
+  - *docs_excludes
