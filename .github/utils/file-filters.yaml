@@ -5,35 +5,15 @@
 # ---- services ---------------------------------------------------------------
 services/go/api-golang:
   - "services/go/api-golang/**"
-  - "!**/*.md"
-  - "!**/*.mdx"
-  - "!**/docs/**"
-  - "!**/README*"
 
 services/node/api-node:
   - "services/node/api-node/**"
-  - "!**/*.md"
-  - "!**/*.mdx"
-  - "!**/docs/**"
-  - "!**/README*"
 
 services/other/postgresql:
   - "services/other/postgresql/**"
-  - "!**/*.md"
-  - "!**/*.mdx"
-  - "!**/docs/**"
-  - "!**/README*"
 
 services/python/load-generator-python:
   - "services/python/load-generator-python/**"
-  - "!**/*.md"
-  - "!**/*.mdx"
-  - "!**/docs/**"
-  - "!**/README*"
 
 services/react/client-react:
   - "services/react/client-react/**"
-  - "!**/*.md"
-  - "!**/*.mdx"
-  - "!**/docs/**"
-  - "!**/README*"
