@@ -1,2 +1,2 @@
 loadGeneratorPython:
-  version: 0.1.7 # production_services/python/load-generator-python
+  version: 0.1.8 # production_services/python/load-generator-python
