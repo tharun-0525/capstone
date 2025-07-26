@@ -53,6 +53,6 @@ jobs:
       - name: Commit & push (via Task)
         if: ${{ !env.ACT }}
         run: |
-          task git:commit-push \
+          task utils:git:commit-push \
             COMMIT_MSG="${{ steps.generate-commit-message.outputs.commit_message }}" \
             BRANCH=main
