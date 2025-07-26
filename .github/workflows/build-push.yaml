@@ -2,7 +2,10 @@ name: Build and Push Container Images
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+    paths:
+      - services/**
     tags:
       - "**@[0-9]*.[0-9]*.[0-9]*" # service/foo/bar@X.Y.Z
 
