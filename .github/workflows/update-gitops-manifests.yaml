@@ -25,6 +25,10 @@ on:
           - staging
           - production
 
+concurrency:
+  group: ${{ github.workflow }}-gitops-${{ inputs.environment }}-${{ replace(inputs.service, '/', '-') }}
+  cancel-in-progress: false
+
 jobs:
   update-manifests:
     runs-on: ubuntu-24.04
