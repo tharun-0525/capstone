@@ -52,6 +52,7 @@ jobs:
       # First used stefanzweifel/git-auto-commit-action but ran into issues with concurrent execution and the working branch being outdated
       - name: Commit & push (via Task)
         if: ${{ !env.ACT }}
+        working-directory: ${{ inputs.service }}
         run: |
           task utils:git:commit-push \
             COMMIT_MSG="${{ steps.generate-commit-message.outputs.commit_message }}" \
