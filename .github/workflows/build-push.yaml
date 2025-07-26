@@ -116,7 +116,7 @@ jobs:
           context: ${{ matrix.service }}
           push: true
           tags: ${{ steps.image-tag.outputs.image_tag }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64 # TODO: add multi arch "linux/amd64,linux/arm64"
           # TODO setup caching
 
       # Trigger deploy as a separate workflow to:
