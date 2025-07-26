@@ -26,7 +26,7 @@ on:
           - production
 
 concurrency:
-  group: ${{ github.workflow }}-gitops-${{ inputs.environment }}-${{ replace(inputs.service, '/', '-') }}
+  group: ${{ github.workflow }}-gitops-${{ inputs.environment }}-${{ github.event.inputs.service }}
   cancel-in-progress: false
 
 jobs:
