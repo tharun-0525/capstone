@@ -25,6 +25,10 @@ on:
           - staging
           - production
 
+concurrency:
+  group: gitops-main # running these serial to avoid git conflics... alternatively, we could instead retry with exponential backoff
+  cancel-in-progress: false
+
 jobs:
   update-manifests:
     runs-on: ubuntu-24.04
@@ -42,6 +46,7 @@ jobs:
           echo "commit_message=${commit_message}" >> "$GITHUB_OUTPUT"
       - working-directory: ${{ inputs.service }}
         run: |
+          # TODO: we could always update staging (so produciton image tags end up there too)
           task utils:update-image-tags-service \
             NEW_TAG=${{ inputs.version }} \
             ENVIRONMENT=${{ inputs.environment }}
