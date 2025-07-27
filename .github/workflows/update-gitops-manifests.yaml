@@ -32,10 +32,14 @@ concurrency:
 jobs:
   update-manifests:
     runs-on: ubuntu-24.04
+    environment: ${{ inputs.environment }}
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main # Checking out the tip of main (vs the GITHUB_REF of the build workflow is more robust to merge conflicts since we merge back to main)
+
       - uses: ./.github/actions/setup-dependencies
         with:
           install_task: "true"
@@ -46,14 +50,15 @@ jobs:
           echo "commit_message=${commit_message}" >> "$GITHUB_OUTPUT"
       - working-directory: ${{ inputs.service }}
         run: |
-          # NOTE: We could always update staging (so production image tags end up there too)
+          # NOTE: We could (additionally) update staging for release tags
+          #       so production image tags end up there too
           task utils:update-image-tags-service \
             NEW_TAG=${{ inputs.version }} \
             ENVIRONMENT=${{ inputs.environment }}
       - run: |
           git diff
+      # First attempt, we used stefanzweifel/git-auto-commit-action but ran into issues with concurrent execution and the working branch being outdated
       # Alternatively, we could use peter-evans/create-pull-request to generate a PR instead
-      # First used stefanzweifel/git-auto-commit-action but ran into issues with concurrent execution and the working branch being outdated
       - name: Commit & push (via Task)
         if: ${{ !env.ACT }}
         working-directory: ${{ inputs.service }}
