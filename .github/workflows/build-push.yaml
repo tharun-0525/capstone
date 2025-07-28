@@ -120,7 +120,9 @@ jobs:
           push: true
           tags: ${{ steps.image-tag.outputs.image_tag }}
           platforms: linux/amd64 # TODO: add multi arch "linux/amd64,linux/arm64"
-          # TODO setup caching
+          # TODO: handle cache invalidation for version changes in package.json
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       # Trigger deploy as a separate workflow to:
       #   1. enable running it manually via workflow_dispatch
