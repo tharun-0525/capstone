@@ -29,6 +29,8 @@ This repository contains the capstone project for the [DevOps Directive GitHub A
 
 ## Workflows Overview
 
+![](./readme-assets/workflow-diagram.jpg)
+
 1. **Run Tests** – .github/workflows/test.yaml
 
     Triggers on push to main (only when files in services/** change), on any pull_request, and via workflow_dispatch. It uses dorny/paths-filter to detect changed services and fans out a matrix job to run tests per service using the local composite action ./.github/actions/setup-dependencies.  ￼
