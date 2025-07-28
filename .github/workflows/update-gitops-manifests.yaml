@@ -1,8 +1,9 @@
 name: Update GitOps Manifests
 
 on:
-  # This could use a workflow_call instead... (or have both)
-  # If using workflow_call
+  # Alternatively, we could use a reuseable workflow (via workflow_call), but that would require refactoring build-push
+  # https://github.com/orgs/community/discussions/42335#discussioncomment-7997348
+  # If using workflow_call:
   # - 👎 can't have type choice (which is nice for manual run executino)
   # - 👍 runs show up in UI under the parent workflow (which is kind of nice)
   workflow_dispatch:
@@ -31,7 +32,7 @@ on:
           - production
 
 concurrency:
-  group: ${{ github.workflow }}-gitops-${{ inputs.environment }}-${{ github.event.inputs.service }}
+  group: ${{ github.workflow }}-gitops-${{ inputs.environment }}-${{ inputs.service }}
   cancel-in-progress: false
 
 jobs:
