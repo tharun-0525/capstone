@@ -5,14 +5,13 @@
 # ---- services ---------------------------------------------------------------
 services/go/api-golang: &api_golang
   - "services/go/api-golang/**"
-  - "services/other/postgresql/**" # db migrations tied to service
+  - "services/other/api-golang-migrator/**" # db migrations tied to service
 
 services/node/api-node:
   - "services/node/api-node/**"
 
-services/other/postgresql:
+services/other/api-golang-migrator:
   - *api_golang # db migrations tied to service
-
 
 services/python/load-generator-python:
   - "services/python/load-generator-python/**"

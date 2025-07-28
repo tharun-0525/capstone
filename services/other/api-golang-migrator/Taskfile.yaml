@@ -3,7 +3,7 @@ version: "3"
 vars:
   IMAGE_REPO: sidpalas/devops-directive-kubernetes-course-db-migrator
   IMAGE_TAG: foobarbaz
-  SERVICE_RELEASE_TAG: services/other/postgresql
+  SERVICE_RELEASE_TAG: services/other/api-golang-migrator
 
 includes:
   utils:

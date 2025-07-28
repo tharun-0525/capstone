@@ -13,8 +13,8 @@
       "component": "services/node/api-node",
       "release-type": "node"
     },
-    "services/other/postgresql": {
-      "component": "services/other/postgresql"
+    "services/other/api-golang-migrator": {
+      "component": "services/other/api-golang-migrator"
     },
     "services/python/load-generator-python": {
       "component": "services/python/load-generator-python",
@@ -31,7 +31,7 @@
       "groupName": "apis-and-db",
       "components": [
         "services/go/api-golang",
-        "services/other/postgresql"
+        "services/other/api-golang-migrator"
       ]
     }
   ],

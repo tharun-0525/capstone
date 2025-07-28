@@ -13,9 +13,9 @@ includes:
   load-generator-python:
     taskfile: ./python/load-generator-python/Taskfile.yaml
     dir: ./load-generator-python
-  postgresql:
-    taskfile: ./other/postgresql/Taskfile.yaml
-    dir: ./postgresql
+  api-golang-migrator:
+    taskfile: ./other/api-golang-migrator/Taskfile.yaml
+    dir: ./api-golang-migrator
 
 vars:
   DATABASE_URL: "postgres://postgres:foobarbaz@localhost:5432/postgres"

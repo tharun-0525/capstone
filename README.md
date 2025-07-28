@@ -19,7 +19,7 @@ This repository contains the capstone project for the [DevOps Directive GitHub A
 │   ├── node/api-node
 │   ├── python/load-generator-python
 │   ├── react/client-react
-│   └── other/postgresql
+│   └── other/api-golang-migrator
 ├── utils/                      # Helper scripts/tasks
 ├── Taskfile.yaml               # Shared task definitions used inside workflows
 └── readme-assets/

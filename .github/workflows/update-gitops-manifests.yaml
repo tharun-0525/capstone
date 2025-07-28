@@ -15,7 +15,7 @@ on:
         options:
           - services/go/api-golang
           - services/node/api-node
-          - services/other/postgresql
+          - services/other/api-golang-migrator
           - services/python/load-generator-python
           - services/react/client-react
       version:
