@@ -2,18 +2,23 @@ name: Update GitOps Manifests
 
 on:
   # This could use a workflow_call instead... (or have both)
+  # If using workflow_call
+  # - 👎 can't have type choice (which is nice for manual run executino)
+  # - 👍 runs show up in UI under the parent workflow (which is kind of nice)
   workflow_dispatch:
     inputs:
       service:
         description: "Path to the service to deploy (go/api-golang)"
         required: true
-        type: string
+        type: choice
+        options:
+          - services/go/api-golang
+          - services/node/api-node
+          - services/other/postgresql
+          - services/python/load-generator-python
+          - services/react/client-react
       version:
         description: "Version to deploy"
-        required: true
-        type: string
-      image_tag:
-        description: "Image tag of the version to deploy"
         required: true
         type: string
       environment:
