@@ -32,6 +32,11 @@ tasks:
     cmds:
       - npm install
 
+  install-ci:
+    desc: install/download package dependencies
+    cmds:
+      - npm ci
+
   run:
     desc: Start node api
     cmds:

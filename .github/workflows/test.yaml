@@ -40,6 +40,10 @@ jobs:
           install_node: ${{ startsWith(matrix.service, 'services/node/') || startsWith(matrix.service, 'react/') }}
           install_python: ${{ startsWith(matrix.service, 'services/python/') }}
           service_path: ${{ matrix.service }}
+      - name: Install / Build
+        working-directory: ${{ matrix.service }}
+        run: |
+          task install-ci
       - name: run tests
         working-directory: ${{ matrix.service }}
         run: |
