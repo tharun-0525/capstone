@@ -2,19 +2,19 @@ version: "3"
 
 includes:
   api-golang:
-    taskfile: ./go/api-golang/Taskfile.yaml
+    taskfile: ./services/go/api-golang/Taskfile.yaml
     dir: ./api-golang
   api-node:
-    taskfile: ./node/api-node/Taskfile.yaml
+    taskfile: ./services/node/api-node/Taskfile.yaml
     dir: ./api-node
   client-react:
-    taskfile: ./react/client-react/Taskfile.yaml
+    taskfile: ./services/react/client-react/Taskfile.yaml
     dir: ./client-react
   load-generator-python:
-    taskfile: ./python/load-generator-python/Taskfile.yaml
+    taskfile: ./services/python/load-generator-python/Taskfile.yaml
     dir: ./load-generator-python
   api-golang-migrator:
-    taskfile: ./other/api-golang-migrator/Taskfile.yaml
+    taskfile: ./services/other/api-golang-migrator/Taskfile.yaml
     dir: ./api-golang-migrator
 
 vars:
