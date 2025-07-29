@@ -733,6 +733,54 @@
         }
       }
     },
+    "namespace-cli@latest": {
+      "last_modified": "2025-07-21T09:58:03Z",
+      "resolved": "github:NixOS/nixpkgs/2baf8e1658cba84a032c3a8befb1e7b06629242a#namespace-cli",
+      "source": "devbox-search",
+      "version": "0.0.431",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/51cn3cf652f2jff9j595kryiiad7av3r-namespace-cli-0.0.431",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/51cn3cf652f2jff9j595kryiiad7av3r-namespace-cli-0.0.431"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/n7mjsi67yrl012cxbn6i9vihh6nic68k-namespace-cli-0.0.431",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/n7mjsi67yrl012cxbn6i9vihh6nic68k-namespace-cli-0.0.431"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lvxb3q1nf1qlizkcxxzlmczl0ydmjshh-namespace-cli-0.0.431",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lvxb3q1nf1qlizkcxxzlmczl0ydmjshh-namespace-cli-0.0.431"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1cwlpmghqmpz51z668zmil52ydzasnb5-namespace-cli-0.0.431",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1cwlpmghqmpz51z668zmil52ydzasnb5-namespace-cli-0.0.431"
+        }
+      }
+    },
     "nodejs_20@latest": {
       "last_modified": "2025-07-22T02:38:50Z",
       "plugin_version": "0.0.2",
