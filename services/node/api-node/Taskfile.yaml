@@ -40,4 +40,4 @@ tasks:
   test:
     desc: run tests
     cmds:
-      - echo "TODO... actually run the tests"
+      - npm run test

@@ -55,4 +55,4 @@ tasks:
   test:
     desc: run tests
     cmds:
-      - echo "TODO... actually run the tests"
+      - go test ./test -v
