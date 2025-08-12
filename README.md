@@ -82,7 +82,7 @@ For example to run the `test` workflow:
 task: [trigger-workflow] act pull_request \
   --container-architecture linux/amd64 \
   -s GITHUB_TOKEN="<GITHUB_TOKEN>" \
-  -e /Users/palas/development/courses/gha-course/devops-directive-github-actions-course/capstone/.github/workflows/test/event.json \
+  -e <PATH_TO_EVENT_JSON> \
   -P ubuntu-24.04=catthehacker/ubuntu:act-22.04 \
   --directory ../../.. \
   -W .github/workflows/test.yaml
