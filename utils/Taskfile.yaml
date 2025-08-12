@@ -64,16 +64,12 @@ tasks:
       - |
         echo "{{.IMAGE_REPO}}:{{.VERSION}}"
 
-  # TODO: roll out tags for each image / environment
   update-image-tags:
     desc: "Recursively update image tags in files with the specified comment"
     vars:
       EXCLUDED_FILES: |
         {{.TASKFILE_DIR}}/Taskfile.yaml
         MORE_FILES_CAN_GO_HERE
-      SED: # This is to make compatible between gsed on macos and sed on linux
-        sh: |
-          if command -v gsed >/dev/null 2>&1; then echo gsed; else echo sed; fi
     cmds:
       - cmd: |
           if [ -z "{{.NEW_TAG}}" ] || [ -z "{{.IDENTIFIER_COMMENT}}" ] || [ -z "{{.STARTING_PATH}}" ]; then
@@ -88,7 +84,7 @@ tasks:
           find "{{.STARTING_PATH}}" -type f \( -name "*.yaml" -o -name "*.yml" \) -exec grep -l "{{.IDENTIFIER_COMMENT}}" {} \; | while read -r file; do
             if ! echo "{{ .EXCLUDED_FILES }}" | grep -q "$file"; then
               echo "Updating: $file"
-              # TODO: macos and gnu sed behave differently here... (currently only works with gsed locally)
+              # NOTE: macos and GNU sed behave differently here... GNU sed is available in the devbox environment
               {{.SED}} -i "s|\(\s*.*:\s*\).* \({{ .IDENTIFIER_COMMENT }}\)|\1{{ .NEW_TAG }} \2|" "$file";
             fi
           done
