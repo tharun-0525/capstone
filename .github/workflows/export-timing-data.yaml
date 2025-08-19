@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Export Workflow Trace
-        uses: inception-health/otel-export-trace-action@7eabc7de1f4753f0b45051b44bb0ba46d05a21ef # v1.8.0
+        uses: corentinmusard/otel-cicd-action@v2.2.4
         with:
           otlpEndpoint: grpc://api.honeycomb.io:443/
           # Formatted as x-honeycomb-team=YOUR_API_KEY
