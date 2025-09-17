@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/sidpalas/capstone/compare/services/go/api-golang@1.3.0...services/go/api-golang@1.3.1) (2025-09-17)
+
+
+### Chores
+
+* update changelog ([#39](https://github.com/sidpalas/capstone/issues/39)) ([4c8bbdc](https://github.com/sidpalas/capstone/commit/4c8bbdcc3424c4f055f710b3a715d70cae409083))
+
 ## [1.3.0](https://github.com/sidpalas/capstone/compare/services/go/api-golang@1.2.9...services/go/api-golang@1.3.0) (2025-09-17)
 
 ### Features
