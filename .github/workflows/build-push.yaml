@@ -81,6 +81,7 @@ jobs:
         with:
           install_task: "true"
       - name: Login to Docker Hub
+        if: ${{ !env.ACT }}
         uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1 # v3.5.0
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -116,7 +117,7 @@ jobs:
         uses: docker/build-push-action@ccc2b40e9ea6518f9252a22a990f8e868370f62e # v6.18.0
         with:
           context: ${{ matrix.service }}
-          push: true
+          push: ${{ !env.ACT }} # Don't push images when running locally
           tags: ${{ steps.image-tag.outputs.image_tag }}
           platforms: linux/amd64 # TODO: add multi arch "linux/amd64,linux/arm64"
           # TODO: handle cache invalidation for version changes in package.json
