@@ -62,7 +62,7 @@ jobs:
             NEW_TAG=${{ inputs.version }} \
             ENVIRONMENT=${{ inputs.environment }}
       - run: |
-          git diff
+          git --no-pager diff
       # First attempt, we used stefanzweifel/git-auto-commit-action but ran into issues with concurrent execution and the working branch being outdated
       # Alternatively, we could use peter-evans/create-pull-request to generate a PR instead
       - name: Commit & push (via Task)
