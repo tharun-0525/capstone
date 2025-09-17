@@ -85,7 +85,7 @@ tasks:
             if ! echo "{{ .EXCLUDED_FILES }}" | grep -q "$file"; then
               echo "Updating: $file"
               # NOTE: macos and GNU sed behave differently here... GNU sed is available in the devbox environment
-              {{.SED}} -i "s|\(\s*.*:\s*\).* \({{ .IDENTIFIER_COMMENT }}\)|\1{{ .NEW_TAG }} \2|" "$file";
+              sed -i "s|\(\s*.*:\s*\).* \({{ .IDENTIFIER_COMMENT }}\)|\1{{ .NEW_TAG }} \2|" "$file";
             fi
           done
 
