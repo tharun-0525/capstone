@@ -7,6 +7,8 @@ import logging
 
 terminate = False
 
+print("Starting load generator...")
+
 def run_load_generator(api_url, delay_ms):
     global terminate
     while not terminate:
